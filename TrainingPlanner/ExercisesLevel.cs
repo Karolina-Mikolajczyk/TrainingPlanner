@@ -6,6 +6,5 @@ public enum ExercisesLevel
     Beginner = 2,
     Intermediate = 3,
     Advanced = 4,
-    Professional =5,
     
 }
