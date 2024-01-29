@@ -6,20 +6,16 @@ namespace WebApplication1.Entities;
 public class TrainingPlannerDbContext: DbContext
 
 {
-    private string _connectionString = String.Empty;
-    protected TrainingPlannerDbContext(DbSet<Exercises> exercises)
-    {
-        Exercises = exercises;
-    }
-
+    private readonly string _connectionString = "Server=(localdb)\\mssqllocaldb;Database=TrainingPlannerDb;Trusted_Connection=True;";
+    
     public DbSet<Exercises> Exercises { get; set; }
 
-
-
+    
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<Exercises>();
-
+        modelBuilder.Entity<Exercises>()
+            .Property((e => e.Id))
+            .IsRequired();
     }
 
     protected override void OnConfiguring(DbContextOptionsBuilder contextOptionsBuilder)
