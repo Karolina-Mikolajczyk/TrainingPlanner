@@ -1,5 +1,4 @@
-﻿using AutoMapper;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using WebApplication1.Entities;
 
 namespace WebApplication1.Controllers;
@@ -8,35 +7,45 @@ namespace WebApplication1.Controllers;
 public class TrainingPlannerController : ControllerBase
 {
     private readonly TrainingPlannerDbContext _dbContext;
-    private readonly IMapper _mapper;
 
-     public TrainingPlannerController(TrainingPlannerDbContext dbContext, IMapper mapper)
+     public TrainingPlannerController(TrainingPlannerDbContext dbContext)
     {
         _dbContext = dbContext;
-        _mapper = mapper;
     }
 
     [HttpPost]
     public ActionResult CreateExercises([FromBody] CreateExercisesDto dto)
     {
-        var exercises = _mapper.Map<Exercises>(dto);
+        // var exercises = _mapper.Map<Exercises>(dto);
+        var exercises = dto.ToExercise(); // extensions method w c#
         _dbContext.Exercises.Add(exercises);
         _dbContext.SaveChanges();
-
+        
         return Created($"/api/exercises/{exercises.Id}", null);
-
-
     }
 
     [HttpGet]
     public ActionResult<IEnumerable<Exercises>> GetAll()
     {
+        // pobierz wszystrkie exercises w bazie danych
         var exercises = _dbContext
             .Exercises
             .ToList();
-        var exercisesDtos = _mapper.Map<List<ExercisesDto>>(exercises);
+        return exercises;
+    }
+    
+    // Exercises dodatkowy get do pobrania konkretnego exercies po przekazanym ID
+    [HttpGet("{id}")]
+    public ActionResult<Exercises> Get([FromRoute] int id)
+    {
+        var exercises = _dbContext
+            .Exercises
+            .FirstOrDefault(e => e.Id == id);
+        if (exercises is null)
+        {
+            return NotFound();
+        }
 
-
-        return Ok(exercisesDtos);
+        return Ok(exercises);
     }
 }

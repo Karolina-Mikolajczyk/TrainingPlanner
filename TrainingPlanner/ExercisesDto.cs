@@ -1,8 +1,9 @@
 ﻿namespace WebApplication1;
 
-public class ExercisesDto
+// to jest klasa na potrzeby kontrollera i swaggera
+public partial class ExercisesDto
 {
-    public string Name { get; set; }
-    public string Description { get; set; }
+    public string Item { get; set; }
+    public string ShortDescription { get; set; }
     public int Id { get; set; }
 }
