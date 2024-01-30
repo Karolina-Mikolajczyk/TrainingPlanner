@@ -1,4 +1,4 @@
-using AutoMapper;
+
 using WebApplication1.Entities;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -10,7 +10,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<TrainingPlannerDbContext>();
-var addAutoMapper = builder.Services.AddAutoMapper(builder.GetType().Assembly);
+
 
 var app = builder.Build();
 
