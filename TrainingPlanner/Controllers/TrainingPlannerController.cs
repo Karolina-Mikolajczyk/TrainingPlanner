@@ -12,6 +12,16 @@ public class TrainingPlannerController : ControllerBase
     {
         _dbContext = dbContext;
     }
+
+    [HttpDelete("delete-all")]
+    public IActionResult DeleteAllRecords()
+    {
+        var allRecords = _dbContext.Exercises.ToList();
+        _dbContext.Exercises.RemoveRange(allRecords);
+        _dbContext.SaveChanges();
+        
+        return Ok ("Wszystkie zasoby zostały usunięte");
+    }
     [HttpPost]
     public ActionResult CreateExercises([FromBody] CreateExercisesDto dto)
     {
