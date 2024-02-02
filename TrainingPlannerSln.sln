@@ -4,6 +4,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrainingPlanner", "Training
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrainingPlanner.FileImport", "TrainingPlanner.FileImport\TrainingPlanner.FileImport.csproj", "{FFCAB243-40E0-4A07-8D87-193D15E5930C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrainingPlanner.FileImport.Test", "TrainingPlanner.FileImport.Test\TrainingPlanner.FileImport.Test.csproj", "{52437F4C-2844-48CF-8BE4-AFB47F482E2E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -22,5 +24,9 @@ Global
 		{FFCAB243-40E0-4A07-8D87-193D15E5930C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FFCAB243-40E0-4A07-8D87-193D15E5930C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FFCAB243-40E0-4A07-8D87-193D15E5930C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{52437F4C-2844-48CF-8BE4-AFB47F482E2E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{52437F4C-2844-48CF-8BE4-AFB47F482E2E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{52437F4C-2844-48CF-8BE4-AFB47F482E2E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{52437F4C-2844-48CF-8BE4-AFB47F482E2E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
