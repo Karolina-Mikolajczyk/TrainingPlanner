@@ -12,7 +12,6 @@ public class TrainingPlannerController : ControllerBase
     {
         _dbContext = dbContext;
     }
-
     [HttpPost]
     public ActionResult CreateExercises([FromBody] CreateExercisesDto dto)
     {

@@ -10,12 +10,18 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<TrainingPlannerDbContext>();
+builder.Services.AddScoped<ExerciseSeeder>();
 
 
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
+using var serviceScope = app.Services.CreateScope();
+var exerciseSeeder =serviceScope.ServiceProvider.GetRequiredService<ExerciseSeeder>();
+exerciseSeeder.Seed();
+
 if (app.Environment.IsDevelopment())
+    
 {
     app.UseSwagger();
     app.UseSwaggerUI();
