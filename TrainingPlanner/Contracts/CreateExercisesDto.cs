@@ -1,4 +1,4 @@
-﻿namespace WebApplication1;
+﻿namespace TrainingPlanner.Contracts;
 
 public class CreateExercisesDto
 {

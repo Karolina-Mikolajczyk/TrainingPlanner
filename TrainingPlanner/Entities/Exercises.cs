@@ -1,4 +1,4 @@
-﻿namespace WebApplication1.Entities;
+﻿namespace TrainingPlanner.Entities;
 
 
 // to jest baza danych

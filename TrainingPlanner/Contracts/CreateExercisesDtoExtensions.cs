@@ -1,10 +1,7 @@
-﻿
-using System.Collections;
-using Microsoft.EntityFrameworkCore;
+﻿using TrainingPlanner.Entities;
 using TrainingPlanner.FileImport;
-using WebApplication1.Entities;
 
-namespace WebApplication1;
+namespace TrainingPlanner.Contracts;
 
 public static class CreateExercisesDtoExtensions
 {

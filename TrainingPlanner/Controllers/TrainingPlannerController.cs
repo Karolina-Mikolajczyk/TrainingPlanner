@@ -1,7 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using WebApplication1.Entities;
+using TrainingPlanner.Contracts;
+using TrainingPlanner.Entities;
 
-namespace WebApplication1.Controllers;
+namespace TrainingPlanner.Controllers;
 
 [Route("api/exercises")]
 public class TrainingPlannerController : ControllerBase
@@ -20,12 +21,11 @@ public class TrainingPlannerController : ControllerBase
         _dbContext.Exercises.RemoveRange(allRecords);
         _dbContext.SaveChanges();
         
-        return Ok ("Wszystkie zasoby zostały usunięte");
+        return Ok ();
     }
     [HttpPost]
     public ActionResult CreateExercises([FromBody] CreateExercisesDto dto)
     {
-        // var exercises = _mapper.Map<Exercises>(dto);
         var exercises = dto.ToExercise(); // extensions method w c#
         _dbContext.Exercises.Add(exercises);
         _dbContext.SaveChanges();
@@ -36,14 +36,12 @@ public class TrainingPlannerController : ControllerBase
     [HttpGet]
     public ActionResult<IEnumerable<Exercises>> GetAll()
     {
-        // pobierz wszystrkie exercises w bazie danych
         var exercises = _dbContext
             .Exercises
             .ToList();
         return exercises;
     }
     
-    // Exercises dodatkowy get do pobrania konkretnego exercies po przekazanym ID
     [HttpGet("{id}")]
     public ActionResult<Exercises> Get([FromRoute] int id)
     {

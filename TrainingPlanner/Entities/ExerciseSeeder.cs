@@ -1,8 +1,7 @@
-﻿
-
+﻿using TrainingPlanner.Contracts;
 using TrainingPlanner.FileImport;
 
-namespace WebApplication1.Entities;
+namespace TrainingPlanner.Entities;
 
 public class ExerciseSeeder
 {

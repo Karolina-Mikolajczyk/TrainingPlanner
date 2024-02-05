@@ -1,4 +1,4 @@
-﻿namespace WebApplication1;
+﻿namespace TrainingPlanner.Contracts;
 
 // to jest klasa na potrzeby kontrollera i swaggera
 public partial class ExercisesDto

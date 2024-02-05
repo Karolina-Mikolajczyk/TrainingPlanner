@@ -1,5 +1,5 @@
 
-using WebApplication1.Entities;
+using TrainingPlanner.Entities;
 
 var builder = WebApplication.CreateBuilder(args);
 
