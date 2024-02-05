@@ -18,6 +18,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\TrainingPlanner.Domain\TrainingPlanner.Domain.csproj" />
       <ProjectReference Include="..\TrainingPlanner.FileImport\TrainingPlanner.FileImport.csproj" />
     </ItemGroup>
 

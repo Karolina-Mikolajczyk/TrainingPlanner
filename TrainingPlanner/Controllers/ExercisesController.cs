@@ -5,11 +5,11 @@ using TrainingPlanner.Entities;
 namespace TrainingPlanner.Controllers;
 
 [Route("api/exercises")]
-public class TrainingPlannerController : ControllerBase
+public class ExercisesController : ControllerBase
 {
     private readonly TrainingPlannerDbContext _dbContext;
 
-     public TrainingPlannerController(TrainingPlannerDbContext dbContext)
+     public ExercisesController(TrainingPlannerDbContext dbContext)
     {
         _dbContext = dbContext;
     }
@@ -21,10 +21,17 @@ public class TrainingPlannerController : ControllerBase
         _dbContext.Exercises.RemoveRange(allRecords);
         _dbContext.SaveChanges();
         
-        return Ok ();
+        return Ok();
     }
+
+    [HttpDelete("{id:long}")]
+    public IActionResult DeleteExercise([FromRoute] long id)
+    {
+        throw new NotImplementedException();
+    }
+    
     [HttpPost]
-    public ActionResult CreateExercises([FromBody] CreateExercisesDto dto)
+    public ActionResult CreateExercises([FromBody] CreateExerciseDto dto)
     {
         var exercises = dto.ToExercise(); // extensions method w c#
         _dbContext.Exercises.Add(exercises);
@@ -33,8 +40,15 @@ public class TrainingPlannerController : ControllerBase
         return Created($"/api/exercises/{exercises.Id}", null);
     }
 
+    [HttpPost("upload")]
+    public async Task<IActionResult> UploadFile([FromBody] IFormFile file)
+    {
+        throw new NotImplementedException();
+    }
+    
+    
     [HttpGet]
-    public ActionResult<IEnumerable<Exercises>> GetAll()
+    public ActionResult<IEnumerable<Exercise>> GetAll()
     {
         var exercises = _dbContext
             .Exercises
@@ -42,12 +56,13 @@ public class TrainingPlannerController : ControllerBase
         return exercises;
     }
     
-    [HttpGet("{id}")]
-    public ActionResult<Exercises> Get([FromRoute] int id)
+    [HttpGet("{id:long}")]
+    public ActionResult<Exercise> Get([FromRoute] long id)
     {
         var exercises = _dbContext
             .Exercises
             .FirstOrDefault(e => e.Id == id);
+       
         if (exercises is null)
         {
             return NotFound();

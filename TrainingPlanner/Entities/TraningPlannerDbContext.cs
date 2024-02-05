@@ -8,13 +8,13 @@ public class TrainingPlannerDbContext: DbContext
     private readonly string _connectionString = "Server=(localdb)\\mssqllocaldb;Database=TrainingPlannerDb;Trusted_Connection=True;";
  
 
-    public DbSet<Exercises> Exercises { get; set; }
+    public DbSet<Exercise> Exercises { get; set; }
     
 
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<Exercises>()
+        modelBuilder.Entity<Exercise>()
             .Property((e => e.Id))
             .IsRequired();
     }

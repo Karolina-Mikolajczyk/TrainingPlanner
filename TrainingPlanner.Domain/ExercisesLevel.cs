@@ -1,4 +1,4 @@
-﻿namespace TrainingPlanner;
+﻿namespace TrainingPlanner.Domain;
 
 public enum ExercisesLevel
 {

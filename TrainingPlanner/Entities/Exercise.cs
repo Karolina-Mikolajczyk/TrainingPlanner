@@ -1,8 +1,6 @@
 ﻿namespace TrainingPlanner.Entities;
 
-
-// to jest baza danych
-public class Exercises
+public class Exercise
 {   
     public string Name { get; set; }
     public string Description { get; set; }

@@ -1,24 +1,15 @@
 ﻿using TrainingPlanner.Entities;
-using TrainingPlanner.FileImport;
 
 namespace TrainingPlanner.Contracts;
 
 public static class CreateExercisesDtoExtensions
 {
-    public static Exercises ToExercise(this CreateExercisesDto dto)
+    public static Exercise ToExercise(this CreateExerciseDto dto)
     {
-        return new Exercises
+        return new Exercise
         {
             Name = dto.Name,
             Description = dto.Description
         };
-    }
-}
-
-public static class ExercisesModelExtension
-{
-    public static IEnumerable<Exercises> ToEntities(this IEnumerable<ExerciseModel> models)
-    {
-        return models.Select(model => new Exercises { Description = model.Description, Name = model.Name }).ToList();
     }
 }

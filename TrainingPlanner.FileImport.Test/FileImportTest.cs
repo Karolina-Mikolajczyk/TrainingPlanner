@@ -9,7 +9,7 @@ public class FileImportTest
     {
         var csvParser = new CsvParser();
 
-        var andSaveToDatabase = csvParser.ParseAndSaveToDatabase(@"C:\Users\karol\Desktop\treningbiegacza\exercises1.csv");
+        var andSaveToDatabase = CsvParser.ParseFile(@"C:\Users\karol\Desktop\treningbiegacza\exercises1.csv");
 
         Assert.True(andSaveToDatabase.Any());
     }

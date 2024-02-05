@@ -6,7 +6,7 @@ namespace TrainingPlanner.FileImport;
 
 public class CsvParser
 {
-    public IEnumerable<ExerciseModel> ParseAndSaveToDatabase(string csvFilePath)
+    public static IEnumerable<ExerciseModel> ParseFile(string csvFilePath)
     {
         using var reader = new StreamReader(csvFilePath);
         using var csv = new CsvReader(reader, new CsvConfiguration(CultureInfo.InvariantCulture) {Delimiter = ";"});
