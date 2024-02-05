@@ -1,7 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Options;
 
-namespace WebApplication1.Entities;
+namespace TrainingPlanner.Entities;
 
 public class TrainingPlannerDbContext: DbContext
 
