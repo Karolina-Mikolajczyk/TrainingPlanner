@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using TrainingPlanner.Contracts;
 using TrainingPlanner.Entities;
+using TrainingPlanner.FileImport;
 
 namespace TrainingPlanner.Controllers;
 
@@ -41,9 +43,19 @@ public class ExercisesController : ControllerBase
     }
 
     [HttpPost("upload")]
-    public async Task<IActionResult> UploadFile([FromBody] IFormFile file)
+    public async Task<IActionResult> UploadFile(IFormFile file)
     {
-        throw new NotImplementedException();
+        var listAsync = await _dbContext.Exercises.ToListAsync();
+        if (listAsync.Any()) return BadRequest("Already imported.");
+        
+        using var reader = new StreamReader(file.OpenReadStream());
+        var csvParser = new CsvParser(reader);
+        var exerciseModels = csvParser.ParseFile();
+        
+        _dbContext.Exercises.AddRange(exerciseModels.ToEntities());
+        await _dbContext.SaveChangesAsync();
+        
+        return Ok(exerciseModels);
     }
     
     

@@ -27,8 +27,10 @@ public class ExerciseSeeder
 
     private IEnumerable<Exercise> GetExercises()
     {
-        var csvParser = new CsvParser();
-        var models = CsvParser.ParseFile(@"C:\Users\karol\Desktop\treningbiegacza\exercise1.csv");
-        return models.ToEntities();
+        // var csvParser = new CsvParser();
+        // var models = CsvParser.ParseFile(@"C:\Users\karol\Desktop\treningbiegacza\exercise1.csv");
+        // return models.ToEntities();
+
+        return Enumerable.Empty<Exercise>();
     }
 }
